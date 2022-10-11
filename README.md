@@ -1,6 +1,15 @@
 # SuperYOLO
 # This code will be completely released after our [article](https://arxiv.org/abs/2209.13351) is received！！！！
-Please wait patiently！！！Thank you！！！
+⭐ Please wait patiently！！！Thank you！！！⭐ 
+
+If our code is helpful to you, please cite:
+
+`@article{zhang2022superyolo,
+  title={SuperYOLO: Super Resolution Assisted Object Detection in Multimodal Remote Sensing Imagery},
+  author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Fang, Zhenman and Li, Yunsong and Du, Qian},
+  journal={arXiv preprint arXiv:2209.13351},
+  year={2022}
+}` 
 
 ## Requirements
 
@@ -76,26 +85,6 @@ python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR
 ## Visualization of results
 
 <p align="center"> <img src="Fig/results.png" width="90%"> </p>
-
-
-## Citation
-@misc{https://doi.org/10.48550/arxiv.2209.13351,
-  doi = {10.48550/ARXIV.2209.13351},
-
-  url = {https://arxiv.org/abs/2209.13351},
-
-  author = {Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Fang, Zhenman and Li, Yunsong and Du, Qian},
-
-  keywords = {Computer Vision and Pattern Recognition (cs.CV), FOS: Computer and information sciences, FOS: Computer and information sciences},
-
-  title = {SuperYOLO: Super Resolution Assisted Object Detection in Multimodal Remote Sensing Imagery},
-
-  publisher = {arXiv},
-
-  year = {2022},
-
-  copyright = {arXiv.org perpetual, non-exclusive license}
-}
 
 ## Acknowledgements
 This code is built on [YOLOv5 (PyTorch)](https://github.com/ultralytics/yolov5). We thank the authors for sharing the codes.
