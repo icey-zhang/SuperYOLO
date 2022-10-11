@@ -1,0 +1,12 @@
+| Dataset | Valiadation |                            Weight                            | **mAP50** |
+| :-----: | :---------: | :----------------------------------------------------------: | :-------: |
+|  VEDAI  |    fold1    | [small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666) |  0.8252   |
+|  VEDAI  |    fold2    | [small_EDSR_fold2](https://pan.baidu.com/s/1k5AzGStOq13B2kj_rvZRsA?pwd=6666) |  0.7053   |
+|  VEDAI  |    fold3    | [small_EDSR_fold3](https://pan.baidu.com/s/15XgBDlK0qTN5ATZmr4aUGw?pwd=6666) |  0.7241   |
+|  VEDAI  |    fold4    | [small_EDSR_fold4](https://pan.baidu.com/s/1C5zBwfndFwHCW833-KM3tA?pwd=6666) |  0.7749   |
+|  VEDAI  |    fold5    | [small_EDSR_fold5](https://pan.baidu.com/s/1iqDgtVOqlmcy6uiEtBP_Xg?pwd=6666) |  0.7448   |
+|  VEDAI  |    fold6    | [small_EDSR_fold6](https://pan.baidu.com/s/10mqgEWvOPRH3PRiqch7y2A?pwd=6666) |  0.7525   |
+|  VEDAI  |    fold7    | [small_EDSR_fold7](https://pan.baidu.com/s/1-viB3Btspl9ZCaXDI_gAow?pwd=6666) |  0.7010   |
+|  VEDAI  |    fold8    | [small_EDSR_fold8](https://pan.baidu.com/s/11TCNq4B1dhyfg-iBjdiPmA?pwd=6666) |  0.7662   |
+|  VEDAI  |    fold9    | [small_EDSR_fold9](https://pan.baidu.com/s/1LpILxKI1qJHQekVuJQAiQw?pwd=6666) |  0.7374   |
+|  VEDAI  |   fold10    | [small_EDSR_fold10](https://pan.baidu.com/s/12ELeCg6rZuUO4YaaXcuJOg?pwd=6666) |  0.7479   |
