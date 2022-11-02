@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from models.sync_batchnorm.batchnorm import SynchronizedBatchNorm2d
-from models.SR.sr_decoder_noBN_noD import Decoder
-from models.SR.edsr import EDSR
+from models.sr_decoder_noBN_noD import Decoder
+from models.edsr import EDSR
 
 # class AttentionModel(nn.module):
 #     def __init__(self,feature_in):
