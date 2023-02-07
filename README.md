@@ -40,7 +40,7 @@ You can use our pretrained checkpoints for test process.
 Download pre-trained model and put it in [here](https://github.com/icey-zhang/SuperYOLO/tree/main/weights).
 
 | Dataset |Valiadation | Weight | **mAP20** | **mAP50** |
-|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)| 0.8252 | 0.8093 |
 | VEDAI | fold2 |[small_EDSR_fold2](https://pan.baidu.com/s/1k5AzGStOq13B2kj_rvZRsA?pwd=6666)| 0.7053 | 0.6989 |
 | VEDAI | fold3 |[small_EDSR_fold3](https://pan.baidu.com/s/15XgBDlK0qTN5ATZmr4aUGw?pwd=6666)| 0.7241 | 0.7196 |
