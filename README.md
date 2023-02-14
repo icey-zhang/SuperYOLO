@@ -82,6 +82,10 @@ python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR
 | **SuperYOLO** | RGB | 90.30 | 82.66 | 76.69 | 68.55 | 53.86 | 79.48 | 58.08 | 70.30 | 72.49 | **4.8256M** | 16.61 |
 | **SuperYOLO** | Multi | **90.86** | **84.35** | **78.11** | **68.11** | **53.26** | **82.33** | **60.95** | 70.94 | **73.61** | 4.8259M | 16.68 |
 
+## time
+2023.2.14 open the train.py
+2023.2.14 update the fusion method (MF)
+
 ## Visualization of results
 
 <p align="center"> <img src="Fig/results.png" width="90%"> </p>
