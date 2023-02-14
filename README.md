@@ -30,11 +30,13 @@ pip install -r requirements.txt
 ### 2. Begin to train
 
 ```python
-python train_up.py --cfg models/SRyolo_noFocus.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 4
+python train.py --cfg models/SRyolo_noFocus.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 4
 ```
 
+the new MF
+
 ```python
-python train_up.py --cfg models/SRyolo_noFocus.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 4
+python train.py --cfg models/SRyolo_MF.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 64
 ```
 
 ## Test
