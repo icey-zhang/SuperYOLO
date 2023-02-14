@@ -5,7 +5,8 @@
 
 If our code is helpful to you, please cite:
 
-```@article{zhang2022superyolo,
+```
+@article{zhang2022superyolo,
   title={SuperYOLO: Super Resolution Assisted Object Detection in Multimodal Remote Sensing Imagery},
   author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Fang, Zhenman and Li, Yunsong and Du, Qian},
   journal={arXiv preprint arXiv:2209.13351},
