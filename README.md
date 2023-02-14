@@ -52,6 +52,8 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 | VEDAI | fold9 |[small_EDSR_fold9](https://pan.baidu.com/s/1LpILxKI1qJHQekVuJQAiQw?pwd=6666) | 0.7374 | 0.7273 |
 | VEDAI | fold10 | [small_EDSR_fold10](https://pan.baidu.com/s/12ELeCg6rZuUO4YaaXcuJOg?pwd=6666) | 0.7479 | 0.7330 |
 
+!!! The new weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
+
 ```python
 python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR 
 ```
