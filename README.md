@@ -33,6 +33,10 @@ pip install -r requirements.txt
 python train_up.py --cfg models/SRyolo_noFocus.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 4
 ```
 
+```python
+python train_up.py --cfg models/SRyolo_noFocus.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 4
+```
+
 ## Test
 
 ### Pretrained Checkpoints
