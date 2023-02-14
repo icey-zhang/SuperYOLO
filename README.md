@@ -14,6 +14,10 @@ If our code is helpful to you, please cite:
 }
 ``` 
 
+
+<p align="center"> <img src="Fig/framework.png" width="90%"> </p>
+
+
 ## Requirements
 
 ```python
