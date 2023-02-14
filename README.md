@@ -95,7 +95,8 @@ python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR
 
 ## time
 2023.2.14 open the train.py
-2023.2.14 update the fusion method (MF)
+
+2023.2.14 update the new fusion method (MF)
 
 ## Visualization of results
 
