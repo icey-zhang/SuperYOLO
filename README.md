@@ -31,13 +31,13 @@ pip install -r requirements.txt
 ### 2. Begin to train
 
 ```python
-python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 4
+python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 4 --input_mode RGB+IR
 ```
 
 new fusion method MF
 
 ```python
-python train.py --cfg models/SRyolo_MF.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 64
+python train.py --cfg models/SRyolo_MF.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 64 --input_mode RGB+IR+MF
 ```
 
 ## Test
@@ -65,6 +65,10 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 
 ```python
 python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR 
+```
+
+```python
+python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR+MF
 ```
 
 ## Results
