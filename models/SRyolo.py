@@ -1,18 +1,16 @@
 # YOLOv5 YOLO-specific modules
-
+# with binary
 import argparse
 import logging
 import sys
 from copy import deepcopy
-
+import scipy.io as sio
 from torch import mode
 
 sys.path.append('./')  # to run '$ python *.py' files in subdirectories
 logger = logging.getLogger(__name__)
 
 from models.common import *
-# from models.quantization_utils.BSQ.bit import *
-# from models.quantization_utils.HAWQ.quant_modules import *
 # from models.swin_transformer import *
 from models.experimental import *
 
@@ -45,7 +43,7 @@ class Detect(nn.Module):
         a = torch.tensor(anchors).float().view(self.nl, -1, 2)
         self.register_buffer('anchors', a)  # shape(nl,na,2)
         self.register_buffer('anchor_grid', a.clone().view(self.nl, 1, -1, 1, 1, 2))  # shape(nl,1,na,1,1,2)
-        self.m = nn.ModuleList(nn.Conv2d(x, self.no * self.na, 1) for x in ch)  # output conv
+        self.m = nn.ModuleList(nn.Conv2d(x, self.no * self.na, 1) for x in ch)#.cuda()  # output conv
 
     def forward(self, x):
         # x = x.copy()  # for profiling
@@ -75,7 +73,7 @@ class Detect(nn.Module):
 
 class Model(nn.Module):
     export = False  # onnx export
-    def __init__(self, cfg='yolov5s.yaml',input_mode='RGB',ch_steam=3, ch=3, nc=None, anchors=None,config=None,sr=True,att=False,sr_att=False,factor=2):  # model, input channels, number of classes
+    def __init__(self, cfg='yolov5s.yaml',input_mode='RGB',ch_steam=3, ch=3, nc=None, anchors=None,config=None,sr=False,factor=2):  #att=False,sr_att=False model, input channels, number of classes
         super(Model, self).__init__()
         if isinstance(cfg, dict):
             self.yaml = cfg  # model dict
@@ -85,10 +83,6 @@ class Model(nn.Module):
             with open(cfg) as f:
                 self.yaml = yaml.load(f, Loader=yaml.SafeLoader)  # model dict
         self.sr = sr
-        self.att = att
-        self.sr_att = sr_att
-        #self.input_mode = input_mode
-        # Define model
         ch = self.yaml['ch'] = self.yaml.get('ch', ch)  # input channels
         if nc and nc != self.yaml['nc']:
             logger.info(f"Overriding model.yaml nc={self.yaml['nc']} with nc={nc}")
@@ -96,47 +90,54 @@ class Model(nn.Module):
         if anchors:
             logger.info(f'Overriding model.yaml anchors with anchors={anchors}')
             self.yaml['anchors'] = round(anchors)  # override yaml value
+        # self.input_mode = input_mode
         if input_mode == 'RGB+IR+fusion':
             self.steam, _ = parse_model(deepcopy(self.yaml),'steam', ch=[ch_steam],config=config)  # zjq model, savelist
         self.model, self.save = parse_model(deepcopy(self.yaml),'backbone+head', ch=[ch],config=config)  # model, savelist
-        #self.FusionAdd = FusionAdd(ch)
-        # self.model, self.save = parse_model(deepcopy(self.yaml), ch=[ch],config=config)  # model, savelist
-        #self.names = [str(i) for i in range(self.yaml['nc'])]  # default names
         if self.sr == True:
-            from models.SR.deeplabedsr import DeepLab
             # from models.deeplab import DeepLab
-            self.model_up = DeepLab(4,self.yaml['c1'],self.yaml['c2'],factor=factor) #'if the size is m:192,768 l:256,1024 x:320 1280
+            from models.deeplabedsr import DeepLab
+            if input_mode == 'IR' or input_mode == 'RGB':
+                self.model_up = DeepLab(3,self.yaml['c1'],self.yaml['c2'],factor=factor)#.cuda() #'if the size is m:192,768 l:256,1024 x:320 1280
+            else:
+                self.model_up = DeepLab(4,self.yaml['c1'],self.yaml['c2'],factor=factor)#.cuda() #'if the size is m:192,768 l:256,1024 x:320 1280
             self.l1=self.yaml['l1']
             self.l2=self.yaml['l2']
-        # if self.sr_att == True:
-        #     from models.deeplab_attention import DeepLab
-        #     self.model_up = DeepLab(4,self.yaml['c1'],self.yaml['c2'],factor=factor) #'if the size is m:192,768 l:256,1024
-        #     self.l1=self.yaml['l1']
-        #     self.l2=self.yaml['l2']
-            
-        #self.model_up = EDSR(ch)
-        # print([x.shape for x in self.forward(torch.zeros(1, ch, 64, 64))])
+        
+        # self.f1=self.yaml['f1']  #蒸馏特征层层数
+        # self.f2=self.yaml['f2']
+        # self.f3=self.yaml['f3']
+
 
         # Build strides, anchors
         m = self.model[-1]  # Detect()
         if isinstance(m, Detect):
             s = 256  # 2x min stride
-            if self.sr==True or self.att==True or self.sr_att == True:
-                m.stride = torch.tensor([s / x.shape[-2] for x in self.forward(torch.zeros(1, ch_steam, s, s),torch.zeros(1, ch_steam, s, s),input_mode)[0]])  # forward
-            else:
-                m.stride = torch.tensor([s / x.shape[-2] for x in self.forward(torch.zeros(1, ch_steam, s, s),torch.zeros(1, ch_steam, s, s),input_mode)[0]])  # forward
+            #m.stride = torch.tensor([s / x.shape[-2] for x in self.forward(torch.zeros(1, ch_steam, s, s),torch.zeros(1, ch_steam, s, s),input_mode)[0]])  # forward
+            m.stride = torch.tensor([s / x.shape[-2] for x in self.forward(torch.zeros(1, ch_steam, s, s),torch.zeros(1, ch_steam, s, s),input_mode)[0]])  # forward
             m.anchors /= m.stride.view(-1, 1, 1)
             check_anchor_order(m)
             self.stride = m.stride
             self._initialize_biases()  # only run once
-
+        # m = self.model[-2]  # Detect()
+        # if isinstance(m, Detect):
+        #     s = 256  # 2x min stride
+        #     #m.stride = torch.tensor([s / x.shape[-2] for x in self.forward(torch.zeros(1, ch_steam, s, s),torch.zeros(1, ch_steam, s, s),input_mode)[0]])  # forward
+        #     m.stride = torch.tensor([s / x.shape[-2] for x in self.forward(torch.zeros(1, ch_steam, s, s),torch.zeros(1, ch_steam, s, s),input_mode)[0]])  # forward
+        #     m.anchors /= m.stride.view(-1, 1, 1)
+        #     check_anchor_order(m)
+        #     self.stride = m.stride
+        #     self._initialize_biases()  # only run once
         # Init weights, biases
         initialize_weights(self)
         self.info()
         logger.info('')
+        
     
-    def forward(self, x, ir,input_mode, augment=False, profile=False): #,input_mode='RGB'
+    def forward(self, x, ir=torch.randn(1,3,512,512), input_mode='RGB+IR', augment=False, profile=False):
         # input_mode = 'RGB+IR' #IRRGB
+        if input_mode=='RGB':
+            ir=x
         if augment:
             img_size = x.shape[-2:]  # height, width
             s = [1, 0.83, 0.67]  # scales
@@ -146,8 +147,8 @@ class Model(nn.Module):
                 xi = scale_img(x.flip(fi) if fi else x, si, gs=int(self.stride.max()))
                 iri = scale_img(ir.flip(fi) if fi else ir, si, gs=int(self.stride.max()))
                 if input_mode =='RGB+IR+fusion':
-                    steam1 = self.forward_once(xi,'steam')[0]
-                    steam2 = self.forward_once(iri,'steam')[0]
+                    steam1 = self.forward_once(x,'steam',profile)
+                    steam2 = self.forward_once(ir,'steam',profile)
                     steam = torch.cat([steam1,steam2],1)
                 if input_mode == 'RGB+IR':
                     steam = torch.cat([xi,iri[:,0:1,:,:]],1)
@@ -155,10 +156,8 @@ class Model(nn.Module):
                     steam = xi
                 if input_mode == 'IR':
                     steam = iri#steam = iri[:,0:1,:,:]
-                if input_mode == 'RGB+IR+FusionAdd':
-                    steam1 = self.forward_once(xi,'steam')[0]
-                    steam2 = self.forward_once(iri,'steam')[0]
-                    steam = self.FusionAdd(steam1,steam2)
+                if input_mode == 'RGB+IR+MF':
+                    steam = [x,ir[:,0:1,:,:]] #[:,0:1,:,:]
                 yi = self.forward_once(steam,'yolo')[0]  # forward
                 # yi = self.forward_once(xi)[0]  # forward
                 # cv2.imwrite('img%g.jpg' % s, 255 * xi[0].numpy().transpose((1, 2, 0))[:, :, ::-1])  # save
@@ -174,71 +173,34 @@ class Model(nn.Module):
                 steam1 = self.forward_once(x,'steam',profile)
                 steam2 = self.forward_once(ir,'steam',profile)
                 steam = torch.cat([steam1,steam2],1)
+                # sio.savemat('features/output.mat', mdict={'data':steam.cpu().numpy()})
             if input_mode == 'RGB+IR':
                 steam = torch.cat([x,ir[:,0:1,:,:]],1)
             if input_mode == 'RGB':
                 steam = x
             if input_mode == 'IR':
                 steam = ir#steam = ir[:,0:1,:,:]
-            if input_mode == 'RGB+IR+FusionAdd':
-                steam1 = self.forward_once(x,'steam',profile)
-                steam2 = self.forward_once(ir,'steam',profile)
-                steam = self.FusionAdd(steam1,steam2)
-            if input_mode == 'RGB+IR+WT':
-                steam = torch.cat([x,ir],1) #[x,ir] #[:,0:1,:,:]
-            if input_mode == 'RGB+IR+SAM' or input_mode == 'RGB+IR+CAM' or input_mode == 'RGB+IR+SSTN':
-                    steam = [x,ir] #[:,0:1,:,:]
+            if input_mode == 'RGB+IR+MF':
+                steam = [x,ir[:,0:1,:,:]] #[:,0:1,:,:]
+                
+            
             self.training |= self.export
             if self.training==True:
-                if (self.sr and self.att) or self.sr_att:
-                    y,output_sr,attentiom_map = self.forward_once(steam,'yolo', profile) #zjq
-                    return y,output_sr,attentiom_map
-                elif self.sr and not self.att:
+                if self.sr:
                     y,output_sr,features = self.forward_once(steam,'yolo', profile) #zjq
                     return y,output_sr,features
-                elif not self.sr and self.att:
-                    y,attentiom_map = self.forward_once(steam,'yolo', profile) #zjq
-                    return y,attentiom_map
                 else:
                     y,features = self.forward_once(steam,'yolo', profile) #zjq
                     return y,features
             else:
-                # if self.sr:
-                #     y,output_sr = self.forward_once(steam,'yolo', profile) #zjq
-                #     return y[0],y[1],output_sr
-                # else:
-                #     y = self.forward_once(steam,'yolo', profile) #zjq
-                #     return y[0],y[1]
                 y,features = self.forward_once(steam,'yolo', profile) #zjq
                 return y[0],y[1],features
-            #return y,output_sr if self.training else y[0],y[1]
-            # y,output_sr = self.forward_once(steam,'yolo', profile) #zjq
-            # return y,output_sr
-            #return y,output_sr #self.forward_once(x, profile)  # single-scale inference, train
 
-    # def forward(self, x, augment=False, profile=False):
-    #     if augment:
-    #         img_size = x.shape[-2:]  # height, width
-    #         s = [1, 0.83, 0.67]  # scales
-    #         f = [None, 3, None]  # flips (2-ud, 3-lr)
-    #         y = []  # outputs
-    #         for si, fi in zip(s, f):
-    #             xi = scale_img(x.flip(fi) if fi else x, si, gs=int(self.stride.max()))
-    #             yi = self.forward_once(xi)[0]  # forward
-    #             # cv2.imwrite(f'img_{si}.jpg', 255 * xi[0].cpu().numpy().transpose((1, 2, 0))[:, :, ::-1])  # save
-    #             yi[..., :4] /= si  # de-scale
-    #             if fi == 2:
-    #                 yi[..., 1] = img_size[0] - yi[..., 1]  # de-flip ud
-    #             elif fi == 3:
-    #                 yi[..., 0] = img_size[1] - yi[..., 0]  # de-flip lr
-    #             y.append(yi)
-    #         return torch.cat(y, 1), None  # augmented inference, train
-    #     else:
-    #         return self.forward_once(x, profile)  # single-scale inference, train
+
+
     
     def forward_once(self, x, string, profile=False):
         y, dt = [], []  # outputs
-        #feature = []
         if string == 'steam':
             for m in self.steam:
                 if m.f != -1:  # if not from previous layer
@@ -256,11 +218,6 @@ class Model(nn.Module):
                 #y.append(x if m.i in self.save_steam else None)  # save output
             return x
         elif string == 'yolo': 
-            # if self.sr or self.sr_att:
-            #     if input_mode == 'RGB+IR+fusion':
-            #         self.save.append(5)
-            #     else:
-            #         self.save.append(8)         
             for m in self.model:
                 if m.f != -1:  # if not from previous layer
                     x = y[m.f] if isinstance(m.f, int) else [x if j == -1 else y[j] for j in m.f]  # from earlier layers
@@ -272,112 +229,24 @@ class Model(nn.Module):
                         _ = m(x)
                     dt.append((time_synchronized() - t) * 100)
                     print('%10.1f%10.0f%10.1fms %-40s' % (o, m.np, dt[-1], m.type))
-                for name, module in m._modules.items():
-                    break
-                if name is 'patch_embed' or name == 'patch_embed':
-                    # x=m(x)
-                    out_trans=m(x)
-                    x = out_trans[-1]
-                    for c in range(len(out_trans)):
-                        y.append(out_trans[c])
-                else:
-                    if m.type == 'models.common.AttentionModel':
-                        attention_map,x = m(x) #在head里面加atention
-                    else:
-                        x = m(x)  # run
-                    #x = m(x)  # run
-                    # print(m)
-                    # try:
-                    #     print('****************',x.shape)
-                    # except:
-                    #     for c in range(len(x)):
-                    #         print('666666666666',len(x[c]))
-                    # try:
-                    #     print(m.type,x.shape)
-                    # except:
-                    #     print(m.type)
+                x = m(x)  # run
+                y.append(x)
+                
 
-                    #y.append(x if m.i in self.save else None)  # save output
-                    y.append(x)
+            # for feature in y[:-1]:
+            #     print((torch.numel(feature)-torch.count_nonzero(feature))/torch.numel(feature))
 
-            #         if m.f !=[17, 20, 23]:
-            #             feature.append(x.cpu().numpy())
-            # import scipy.io as sio
-            # for i in range(len(feature)):
-            #     sio.savemat('features/feature_{}.mat'.format(i), mdict={'data':feature[i]})
-            #output_sr = self.model_up(y[4],y[9])
+
             self.training |= self.export
             if self.training==True:
-                # if self.sr:
-                #     output_sr = self.model_up(y[4],y[8])
-                if self.sr_att:
-                    # if input_mode == 'RGB+IR+fusion':
-                    #     attention_map,output_sr = self.model_up(y[1],y[5]) #在超分上加attention
-                    # else:
-                    #     attention_map,output_sr = self.model_up(y[4],y[8]) #在超分上加attention
-                    attention_map,output_sr = self.model_up(y[self.l1],y[self.l2])
-                    return x,output_sr,attention_map
-                elif self.sr and self.att:
-                    #output_sr = self.model_up(y[4],y[8])  #4,9
-                    # if input_mode == 'RGB+IR+fusion':
-                    #     output_sr = self.model_up(y[1],y[5]) #在超分上加attention
-                    # else:
-                    #     output_sr = self.model_up(y[4],y[8]) #在超分上加attention
-                    output_sr = self.model_up(y[self.l1],y[self.l2])
-                    return x,output_sr,attention_map
-                elif self.sr and not self.att:
-                    #output_sr = self.model_up(y[4],y[8])
-                    # if input_mode == 'RGB+IR+fusion':
-                    #     output_sr = self.model_up(y[1],y[5]) #在超分上加attention
-                    # else:
-                    #     output_sr = self.model_up(y[4],y[8]) #在超分上加attention
-                    output_sr = self.model_up(y[self.l1],y[self.l2])
-                    return x,output_sr,(y[8],y[16],y[-2])
-                elif not self.sr and self.att:
-                    return x,attention_map
+                if self.sr:
+                    output_sr = self.model_up(y[self.l1],y[self.l2]) #在超分上加attention    
+                    return x,output_sr,y#(y[self.f1],y[self.f2],y[self.f3])#(y[4],y[8],y[18],y[21],y[24])#(y[7],y[15],y[-2])
                 else:
-                    return x,(y[8],y[16],y[-2])
-                #output_sr = self.model_up(y[4],y[8]) #self.model_up(y[1],y[6])  效果变好
-                #return x,output_sr
+                    return x,y#(y[self.f1],y[self.f2],y[self.f3])#(y[4],y[8],y[18],y[21],y[24])#(y[7],y[15],y[-2])
             else:
-                # if self.sr:
-                #     output_sr = self.model_up(y[self.l1],y[self.l2])
-                #     return x,output_sr
-                # else:
-                    # return x
-                return x,(y[8],y[16],y[-2])
-            #output_sr = self.model_up(y[6],y[8])
-            # sio.savemat('features/output_sr.mat', mdict={'data':output_sr.cpu().numpy()})
-            #output_sr = self.model_up(y[8]) #y[4],
-            # output_sr = self.model_up(y[4],y[8])
-            # return x,output_sr 
-            #return x,output_sr if self.training else x
-            # return output,output_sr,fea_seg,fea_sr
+                return x,y#(y[17],y[20],y[23])#(y[4],y[8],y[18],y[21],y[24])#(y[7],y[15],y[-2])(y[-4],y[-3],y[-2])
 
-        # if profile:
-        #     print('%.1fms total' % sum(dt))
-
-
-    # def forward_once(self, x, profile=False):
-    #     y, dt = [], []  # outputs
-    #     for m in self.model:
-    #         if m.f != -1:  # if not from previous layer
-    #             x = y[m.f] if isinstance(m.f, int) else [x if j == -1 else y[j] for j in m.f]  # from earlier layers
-
-    #         if profile:
-    #             o = thop.profile(m, inputs=(x,), verbose=False)[0] / 1E9 * 2 if thop else 0  # FLOPS
-    #             t = time_synchronized()
-    #             for _ in range(10):
-    #                 _ = m(x)
-    #             dt.append((time_synchronized() - t) * 100)
-    #             print('%10.1f%10.0f%10.1fms %-40s' % (o, m.np, dt[-1], m.type))
-
-    #         x = m(x)  # run
-    #         y.append(x if m.i in self.save else None)  # save output
-
-    #     if profile:
-    #         print('%.1fms total' % sum(dt))
-    #     return x
 
     def _initialize_biases(self, cf=None):  # initialize biases into Detect(), cf is class frequency
         # https://arxiv.org/abs/1708.02002 section 3.3
@@ -403,7 +272,7 @@ class Model(nn.Module):
     def fuse(self):  # fuse model Conv2d() + BatchNorm2d() layers
         print('Fusing layers... ')
         for m in self.model.modules():
-            if type(m) is Conv and hasattr(m, 'bn'):
+            if (type(m) is Conv) and hasattr(m, 'bn'):
                 m.conv = fuse_conv_and_bn(m.conv, m.bn)  # update conv
                 delattr(m, 'bn')  # remove batchnorm
                 m.forward = m.fuseforward  # update forward
@@ -460,7 +329,7 @@ def parse_model(d, string, ch,config):  # model_dict, input_channels(3)
                 pass
 
         n = max(round(n * gd), 1) if n > 1 else n  # depth gain
-        if m in [Conv, Bottleneck, SPP, SPPF, DWConv, MixConv2d, Focus, CrossConv, BottleneckCSP,BottleneckCSP2,SPPCSP, C3,AttentionModel]:
+        if m in [Conv, ACmix, Bottleneck, SPP, DWConv, MixConv2d, Focus, CrossConv, BottleneckCSP, BottleneckCSP2, SPPCSP, C3, AttentionModel]:
             c1, c2 = ch[f], args[0]
 
             # Normal
@@ -482,12 +351,12 @@ def parse_model(d, string, ch,config):  # model_dict, input_channels(3)
             #     c2 = make_divisible(c2, 8) if c2 != no else c2
 
             args = [c1, c2, *args[1:]]
-            if m in [BottleneckCSP, C3, SPPCSP,BottleneckCSP2]:
+            if m in [BottleneckCSP, C3,BottleneckCSP2, SPPCSP]:
                 args.insert(2, n)
                 n = 1
         elif m is nn.BatchNorm2d:
             args = [ch[f]]
-        elif m is Concat:
+        elif m is Concat:# or m is SAM:
             c2 = sum([ch[x if x < 0 else x + 1] for x in f])
         elif m is Detect:
             args.append([ch[x + 1] for x in f])
@@ -497,30 +366,9 @@ def parse_model(d, string, ch,config):  # model_dict, input_channels(3)
             c2 = ch[f if f < 0 else f + 1] * args[0] ** 2
         elif m is Expand:
             c2 = ch[f if f < 0 else f + 1] // args[0] ** 2
-        # elif m is SwinTransformer:
-        #     c2 = args
         else:
             c2 = ch[f if f < 0 else f + 1]
-        
-        # if m is SwinTransformer:
-        #     m_ = SwinTransformer(pretrain_img_size=config.DATA.IMG_SIZE,
-        #                         patch_size=config.MODEL.SWIN.PATCH_SIZE,
-        #                         in_chans=config.MODEL.SWIN.IN_CHANS,
-        #                         # num_classes=config.MODEL.NUM_CLASSES,
-        #                         embed_dim=config.MODEL.SWIN.EMBED_DIM,
-        #                         depths=config.MODEL.SWIN.DEPTHS,
-        #                         num_heads=config.MODEL.SWIN.NUM_HEADS,
-        #                         window_size=config.MODEL.SWIN.WINDOW_SIZE,
-        #                         mlp_ratio=config.MODEL.SWIN.MLP_RATIO,
-        #                         qkv_bias=config.MODEL.SWIN.QKV_BIAS,
-        #                         qk_scale=config.MODEL.SWIN.QK_SCALE,
-        #                         drop_rate=config.MODEL.DROP_RATE,
-        #                         drop_path_rate=config.MODEL.DROP_PATH_RATE,
-        #                         ape=config.MODEL.SWIN.APE,
-        #                         patch_norm=config.MODEL.SWIN.PATCH_NORM,
-        #                         use_checkpoint=config.TRAIN.USE_CHECKPOINT)
-        #     i_shoud_add = 3
-        # else:
+
         m_ = nn.Sequential(*[m(*args) for _ in range(n)]) if n > 1 else m(*args)  # module
         t = str(m)[8:-2].replace('__main__.', '')  # module type
         np = sum([x.numel() for x in m_.parameters()])  # number params
@@ -528,65 +376,10 @@ def parse_model(d, string, ch,config):  # model_dict, input_channels(3)
         logger.info('%3s%18s%3s%10.0f  %-40s%-30s' % (i+i_shoud_add, f, n, np, t, args))  # print
         save.extend(x % (i+i_shoud_add) for x in ([f] if isinstance(f, int) else f) if x != -1)  # append to savelist
         layers.append(m_)
-        # if m is SwinTransformer:
-        #     ch.extend(c2)
-        # else:
         ch.append(c2)
 
         
     return nn.Sequential(*layers), sorted(save)
-# def parse_model(d, ch):  # model_dict, input_channels(3)
-#     logger.info('\n%3s%18s%3s%10s  %-40s%-30s' % ('', 'from', 'n', 'params', 'module', 'arguments'))
-#     anchors, nc, gd, gw = d['anchors'], d['nc'], d['depth_multiple'], d['width_multiple']
-#     na = (len(anchors[0]) // 2) if isinstance(anchors, list) else anchors  # number of anchors
-#     no = na * (nc + 5)  # number of outputs = anchors * (classes + 5)
-
-#     layers, save, c2 = [], [], ch[-1]  # layers, savelist, ch out
-#     for i, (f, n, m, args) in enumerate(d['backbone'] + d['head']):  # from, number, module, args
-#         m = eval(m) if isinstance(m, str) else m  # eval strings
-#         for j, a in enumerate(args):
-#             try:
-#                 args[j] = eval(a) if isinstance(a, str) else a  # eval strings
-#             except:
-#                 pass
-
-#         n = max(round(n * gd), 1) if n > 1 else n  # depth gain
-#         if m in [Conv, GhostConv, Bottleneck, GhostBottleneck, SPP, DWConv, MixConv2d, Focus, CrossConv, BottleneckCSP,
-#                  C3]:
-#             c1, c2 = ch[f], args[0]
-#             if c2 != no:  # if not output
-#                 c2 = make_divisible(c2 * gw, 8)
-
-#             args = [c1, c2, *args[1:]]
-#             if m in [BottleneckCSP, C3]:
-#                 args.insert(2, n)  # number of repeats
-#                 n = 1
-#         elif m is nn.BatchNorm2d:
-#             args = [ch[f]]
-#         elif m is Concat:
-#             c2 = sum([ch[x] for x in f])
-#         elif m is Detect:
-#             args.append([ch[x] for x in f])
-#             if isinstance(args[1], int):  # number of anchors
-#                 args[1] = [list(range(args[1] * 2))] * len(f)
-#         elif m is Contract:
-#             c2 = ch[f] * args[0] ** 2
-#         elif m is Expand:
-#             c2 = ch[f] // args[0] ** 2
-#         else:
-#             c2 = ch[f]
-
-#         m_ = nn.Sequential(*[m(*args) for _ in range(n)]) if n > 1 else m(*args)  # module
-#         t = str(m)[8:-2].replace('__main__.', '')  # module type
-#         np = sum([x.numel() for x in m_.parameters()])  # number params
-#         m_.i, m_.f, m_.type, m_.np = i, f, t, np  # attach index, 'from' index, type, number params
-#         logger.info('%3s%18s%3s%10.0f  %-40s%-30s' % (i, f, n, np, t, args))  # print
-#         save.extend(x % i for x in ([f] if isinstance(f, int) else f) if x != -1)  # append to savelist
-#         layers.append(m_)
-#         if i == 0:
-#             ch = []
-#         ch.append(c2)
-#     return nn.Sequential(*layers), sorted(save)
 
 
 if __name__ == '__main__':
