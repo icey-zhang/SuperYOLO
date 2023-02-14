@@ -42,7 +42,7 @@ python train.py --cfg models/SRyolo_MF.yaml --super --train_img_size 1024 --hr_i
 
 ## Test
 
-### Pretrained Checkpoints
+### 1. Pretrained Checkpoints
 You can use our pretrained checkpoints for test process.
 Download pre-trained model and put it in [here](https://github.com/icey-zhang/SuperYOLO/tree/main/weights).
 
@@ -62,10 +62,13 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 
 !!!⭐⭐ The new weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
 
+### 2. Begin to test
 
 ```python
 python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR 
 ```
+
+new fusion method MF
 
 ```python
 python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR+MF
