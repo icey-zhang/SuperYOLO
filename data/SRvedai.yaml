@@ -13,6 +13,7 @@
 # train: ../coco128/images/train2017/  # 128 images
 # val: ../coco128/images/train2017/  # 128 images
 train: /home/data/zhangjiaqing/dataset/VEDAI/fold01_write.txt
+test: /home/data/zhangjiaqing/dataset/VEDAI/fold01test_write.txt
 val: /home/data/zhangjiaqing/dataset/VEDAI/fold01test_write.txt
 
 # number of classes
