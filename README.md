@@ -64,10 +64,11 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 | VEDAI | fold8 |[small_EDSR_fold8](https://pan.baidu.com/s/11TCNq4B1dhyfg-iBjdiPmA?pwd=6666)| 0.7662 | 0.7539 |
 | VEDAI | fold9 |[small_EDSR_fold9](https://pan.baidu.com/s/1LpILxKI1qJHQekVuJQAiQw?pwd=6666) | 0.7374 | 0.7273 |
 | VEDAI | fold10 | [small_EDSR_fold10](https://pan.baidu.com/s/12ELeCg6rZuUO4YaaXcuJOg?pwd=6666) | 0.7479 | 0.7330 |
-The google drive link is [small_EDSR](https://drive.google.com/drive/folders/1rBKldurJhOxn_ahBE8xz1emlZcdqiX6z?usp=sharing) 
+|||The google drive link is [small_EDSR](https://drive.google.com/drive/folders/1rBKldurJhOxn_ahBE8xz1emlZcdqiX6z?usp=sharing) |||
 
 
 !!!⭐⭐ The new weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
+
 The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/1uLgWbNO_rSGLGa2yFS2Lm85gd1CqC_NM?usp=sharing)
 
 ### 2. Begin to test
