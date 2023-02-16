@@ -25,7 +25,7 @@ import torch.nn.functional as F
 # from models.ir_1w1a import IRConv2d as IRConv2d_1w1a
 # from models.ir_1w1a import IRConv2d_test as IRConv2d_1w1a_test
 # from models.quantization import Qout_Activation_Quantize
-from utils.datasets import get_edge
+# from utils.datasets import get_edge
 class SiLU(torch.nn.Module):  # export-friendly version of nn.SiLU()
     @staticmethod
     def forward(x):
