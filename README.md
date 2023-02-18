@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 - 1.1 In order to realize the SR assisted branch, the input images of the network are downsampled from 1024 x 1024 size to 512 x 512 during the training process. In the test process, the image size is 512 x 512, which is consistent with the input of other algorithms compared.
 
-- 1.2 Download VEDAI data for our experiment from [baiduyun](https://pan.baidu.com/s/1L0SWi5AQA6ZK9jDIWRY7Fg) (code: hvi4).
+- 1.2 Download VEDAI data for our experiment from [baiduyun](https://pan.baidu.com/s/1L0SWi5AQA6ZK9jDIWRY7Fg) (code: hvi4) [google drive](https://drive.google.com/file/d/1Fz0VVlBS924pM3RQvcTsD_qaGjxzIv3y/view?usp=sharing).
 
 - 1.3 Note that we transform the labels of the dataset to be horizontal boxes by [transform code](data/transform.py). You shoud run transform.py before training the model.
 
