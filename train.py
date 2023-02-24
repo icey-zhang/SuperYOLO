@@ -134,7 +134,7 @@ def train(hyp, opt, device, tb_writer=None):
         skip = model.no_weight_decay()
     if hasattr(model, 'no_weight_decay_keywords'):
         skip_keywords = model.no_weight_decay_keywords()
-    from utils.optimizer import set_weight_decay
+    from optimizer import set_weight_decay
     pg0 = set_weight_decay(model, skip, skip_keywords)
 
     if opt.adam:
