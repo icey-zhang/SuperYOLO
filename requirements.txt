@@ -25,7 +25,7 @@ pandas
 # scikit-learn==0.19.2  # for coreml quantization
 
 # extras --------------------------------------
-thop==thop-0.0.31.post2005241907  # FLOPS computation
+thop==0.0.31.post2005241907  # FLOPS computation
 pycocotools>=2.0  # COCO mAP
 
 #results
