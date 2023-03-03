@@ -48,6 +48,8 @@ class Conv(nn.Module):
     def forward(self, x):
         y = self.act(self.bn(self.conv(x)))
         return y
+    def fuseforward(self, x):
+        return self.act(self.conv(x))
 
 
 class Bottleneck(nn.Module):
