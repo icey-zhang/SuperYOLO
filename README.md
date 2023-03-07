@@ -32,7 +32,24 @@ pip install -r requirements.txt
 
 - 1.2 Download VEDAI data for our experiment from [baiduyun](https://pan.baidu.com/s/1L0SWi5AQA6ZK9jDIWRY7Fg) (code: hvi4) [google drive](https://drive.google.com/file/d/1Fz0VVlBS924pM3RQvcTsD_qaGjxzIv3y/view?usp=sharing).
 
-- 1.3 Note that we transform the labels of the dataset to be horizontal boxes by [transform code](data/transform.py). You shoud run transform.py before training the model.
+- 1.3 Note that we transform the labels of the dataset to be horizontal boxes by [transform code](data/transform.py). You shoud run transform.py before training the model. 
+
+The path of dataset is like that
+
+'''
+SuperYOLO
+├── data
+│   ├── VEDAI
+│   │   ├── images
+│   │   ├── labels
+│   │   ├── fold01.txt
+│   │   ├── fold01test.txt
+│   │   ├── fold02.txt
+│   │   ├── .....
+│   ├── VEDAI1024
+│   │   ├── images
+│   │   ├── labels
+'''
 
 ### 2. Begin to train
 
