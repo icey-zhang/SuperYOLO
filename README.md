@@ -38,7 +38,7 @@ The path of dataset is like that
 
 ```python
 SuperYOLO
-├── data
+├── dataset
 │   ├── VEDAI
 │   │   ├── images
 │   │   ├── labels
