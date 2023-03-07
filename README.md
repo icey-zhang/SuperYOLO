@@ -47,7 +47,7 @@ SuperYOLO
 │   │   ├── labels
 ```
 
-- 1.3 Note that we transform the labels of the dataset to be horizontal boxes by [transform code](data/transform.py). You shoud run transform.py before training the model. Change the PATH = './dataset/' and then run the code.
+- 1.3 Note that we transform the labels of the dataset to be horizontal boxes by [transform code](data/transform.py). You shoud run transform.py before training the model. Change the **PATH = './dataset/'** and then run the code.
 
 
 
