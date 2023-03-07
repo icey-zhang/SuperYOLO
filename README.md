@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 The path of dataset is like that
 
-'''
+```python
 SuperYOLO
 ├── data
 │   ├── VEDAI
@@ -49,7 +49,7 @@ SuperYOLO
 │   ├── VEDAI1024
 │   │   ├── images
 │   │   ├── labels
-'''
+```
 
 ### 2. Begin to train
 
