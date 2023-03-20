@@ -71,7 +71,7 @@ python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 
 ```
 
 ```python
-python train.py --cfg models/SRyolo_noFocus_small.yaml --train_img_size 512 --data data/SRvedai.yaml --ch 3 --input_mode IR
+python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 3 --input_mode IR
 ```
 
 ### 4. Begin to train multi images without sr branch
