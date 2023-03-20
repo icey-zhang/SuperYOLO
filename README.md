@@ -83,7 +83,7 @@ python train.py --cfg models/SRyolo_noFocus_small.yaml --train_img_size 512 --da
 new fusion method MF
 
 ```python
-python train.py --cfg models/SRyolo_MF.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 64 --input_mode RGB+IR+MF
+python train.py --cfg models/SRyolo_MF.yaml --train_img_size 512 --data data/SRvedai.yaml --ch 64 --input_mode RGB+IR+MF
 ```
 
 ### 5. Begin to train RGB or IR images without sr branch
