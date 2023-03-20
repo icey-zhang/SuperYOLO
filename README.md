@@ -165,6 +165,8 @@ python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR+MF
 
 2023.2.14 update the new fusion method (MF)
 
+<p align="center"> <img src="Fig/Fusion_se.png" width="90%"> </p>
+
 2023.2.16 update the test.py for visualization of detection results
 
 ## Visualization of results
