@@ -52,7 +52,7 @@ SuperYOLO
 
 
 
-### 2. Begin to train
+### 2. Begin to train multi images
 
 ```python
 python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 4 --input_mode RGB+IR
@@ -62,6 +62,16 @@ new fusion method MF
 
 ```python
 python train.py --cfg models/SRyolo_MF.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 64 --input_mode RGB+IR+MF
+```
+
+### 3. Begin to train RGB or IR images
+
+```python
+python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 3 --input_mode RGB
+```
+
+```python
+python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 3 --input_mode IR
 ```
 
 ## Test
