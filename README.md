@@ -74,7 +74,7 @@ python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 
 python train.py --cfg models/SRyolo_noFocus_small.yaml --super --train_img_size 1024 --hr_input --data data/SRvedai.yaml --ch 3 --input_mode IR
 ```
 
-### 4. Begin to train multi images without sr branch
+### 4. Begin to train multi images without SR branch
 
 ```python
 python train.py --cfg models/SRyolo_noFocus_small.yaml --train_img_size 512 --data data/SRvedai.yaml --ch 4 --input_mode RGB+IR
@@ -86,7 +86,7 @@ new fusion method MF
 python train.py --cfg models/SRyolo_MF.yaml --train_img_size 512 --data data/SRvedai.yaml --ch 64 --input_mode RGB+IR+MF
 ```
 
-### 5. Begin to train RGB or IR images without sr branch
+### 5. Begin to train RGB or IR images without SR branch
 
 ```python
 python train.py --cfg models/SRyolo_noFocus_small.yaml --train_img_size 512 --data data/SRvedai.yaml --ch 3 --input_mode RGB
