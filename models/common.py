@@ -188,9 +188,9 @@ class MF(nn.Module):# stereo attention block
         self.softmax = nn.Softmax(-1)
         self.bottleneck1 = nn.Conv2d(1, 16, 3, 1, 1, bias=False)
         self.bottleneck2 = nn.Conv2d(channels, 48, 3, 1, 1, bias=False)
-        self.se = SE_Block(64)
-        self.se_r = SE_Block(3)
-        self.se_i = SE_Block(1)
+        self.se = SE_Block(64,16)
+        self.se_r = SE_Block(3,3)
+        self.se_i = SE_Block(1,1)
 
 
     def forward(self, x):# B * C * H * W #x_left, x_right
