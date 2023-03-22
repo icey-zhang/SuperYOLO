@@ -1,7 +1,8 @@
 You can use our pretrained checkpoints for test process.
 Download pre-trained model and put it in [here](https://github.com/icey-zhang/SuperYOLO/tree/main/weights).
 
-- The weights for SuperYOLO
+- **The weights for SuperYOLO**
+
 | Dataset |Valiadation | Weight | **mAP20** | **mAP50** |
 |:---:|:---:|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)| 0.8252 | 0.8093 |
@@ -23,7 +24,8 @@ The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/
 
 
 
-- The weights for YOLOv5s
+- **The weights for YOLOv5s**
+
 | Dataset |Valiadation | Weight |
 |:---:|:---:|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)|
@@ -38,7 +40,8 @@ The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/
 | VEDAI | fold10 | [small_EDSR_fold10](https://pan.baidu.com/s/12ELeCg6rZuUO4YaaXcuJOg?pwd=6666) |
 
 
-- The weights for YOLOv5m
+- **The weights for YOLOv5m**
+
 | Dataset |Valiadation | Weight |
 |:---:|:---:|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)|
@@ -52,7 +55,8 @@ The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/
 | VEDAI | fold9 |[small_EDSR_fold9](https://pan.baidu.com/s/1LpILxKI1qJHQekVuJQAiQw?pwd=6666) | 
 | VEDAI | fold10 | [small_EDSR_fold10](https://pan.baidu.com/s/12ELeCg6rZuUO4YaaXcuJOg?pwd=6666) |
 
-- The weights for YOLOv5l
+- **The weights for YOLOv5l**
+
 | Dataset |Valiadation | Weight |
 |:---:|:---:|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)|
