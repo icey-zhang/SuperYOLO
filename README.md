@@ -118,9 +118,9 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 |||The google drive link is [small_EDSR](https://drive.google.com/drive/folders/1rBKldurJhOxn_ahBE8xz1emlZcdqiX6z?usp=sharing) |||
 
 
-!!!⭐⭐ The new weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
+⭐⭐ The new weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
 
-The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/1uLgWbNO_rSGLGa2yFS2Lm85gd1CqC_NM?usp=sharing)
+⭐⭐The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/1uLgWbNO_rSGLGa2yFS2Lm85gd1CqC_NM?usp=sharing)
 
 ### 2. Begin to test
 
