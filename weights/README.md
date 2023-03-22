@@ -27,6 +27,6 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 
 - **The weights for YOLOv5**
 
-The weight is available at [small_EDSR_MF]链接：https://pan.baidu.com/s/14Rb8V-Y-h0OkHPmmvoh4HQ?pwd=6666)
+The weight is available at [YOLOv5]链接：https://pan.baidu.com/s/14Rb8V-Y-h0OkHPmmvoh4HQ?pwd=6666)
 
 
