@@ -27,7 +27,7 @@ The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/
 - **The weights for YOLOv5s**
 
 | Dataset |Valiadation | Weight |
-|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)|
 | VEDAI | fold2 |[small_EDSR_fold2](https://pan.baidu.com/s/1k5AzGStOq13B2kj_rvZRsA?pwd=6666)|
 | VEDAI | fold3 |[small_EDSR_fold3](https://pan.baidu.com/s/15XgBDlK0qTN5ATZmr4aUGw?pwd=6666)| 
@@ -43,7 +43,7 @@ The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/
 - **The weights for YOLOv5m**
 
 | Dataset |Valiadation | Weight |
-|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)|
 | VEDAI | fold2 |[small_EDSR_fold2](https://pan.baidu.com/s/1k5AzGStOq13B2kj_rvZRsA?pwd=6666)|
 | VEDAI | fold3 |[small_EDSR_fold3](https://pan.baidu.com/s/15XgBDlK0qTN5ATZmr4aUGw?pwd=6666)| 
@@ -58,7 +58,7 @@ The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/
 - **The weights for YOLOv5l**
 
 | Dataset |Valiadation | Weight |
-|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)|
 | VEDAI | fold2 |[small_EDSR_fold2](https://pan.baidu.com/s/1k5AzGStOq13B2kj_rvZRsA?pwd=6666)|
 | VEDAI | fold3 |[small_EDSR_fold3](https://pan.baidu.com/s/15XgBDlK0qTN5ATZmr4aUGw?pwd=6666)| 
