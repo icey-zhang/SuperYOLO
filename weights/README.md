@@ -25,22 +25,8 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 
 
 
-- **The weights for YOLOv5s**
+- **The weights for YOLOv5**
 
-The weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
+The weight is available at [small_EDSR_MF]链接：https://pan.baidu.com/s/14Rb8V-Y-h0OkHPmmvoh4HQ?pwd=6666)
 
-The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/1uLgWbNO_rSGLGa2yFS2Lm85gd1CqC_NM?usp=sharing)
-
-
-- **The weights for YOLOv5m**
-
-The weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
-
-The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/1uLgWbNO_rSGLGa2yFS2Lm85gd1CqC_NM?usp=sharing)
-
-- **The weights for YOLOv5l**
-
-The weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
-
-The google drive link is [small_EDSR_MF](https://drive.google.com/drive/folders/1uLgWbNO_rSGLGa2yFS2Lm85gd1CqC_NM?usp=sharing)
 
