@@ -6,12 +6,16 @@
 If our code is helpful to you, please cite:
 
 ```
-@article{zhang2022superyolo,
-  title={SuperYOLO: Super Resolution Assisted Object Detection in Multimodal Remote Sensing Imagery},
+@ARTICLE{10075555,
   author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Fang, Zhenman and Li, Yunsong and Du, Qian},
-  journal={arXiv preprint arXiv:2209.13351},
-  year={2022}
-}
+  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+  title={SuperYOLO: Super Resolution Assisted Object Detection in Multimodal Remote Sensing Imagery}, 
+  year={2023},
+  volume={61},
+  number={},
+  pages={1-15},
+  doi={10.1109/TGRS.2023.3258666}}
+
 ``` 
 
 
