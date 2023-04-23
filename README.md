@@ -180,5 +180,15 @@ python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR+MF
 ## Acknowledgements
 This code is built on [YOLOv5 (PyTorch)](https://github.com/ultralytics/yolov5). We thank the authors for sharing the codes.
 
+## licencing
+
+Copyright (C) 2020 Jiaqing Zhang
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.
+
 ## Contact
 If you have any question, please contact me with email (jq.zhangcn@foxmail.com).
