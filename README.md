@@ -180,7 +180,7 @@ python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR+MF
 ## Acknowledgements
 This code is built on [YOLOv5 (PyTorch)](https://github.com/ultralytics/yolov5). We thank the authors for sharing the codes.
 
-## licencing
+## Licencing
 
 Copyright (C) 2020 Jiaqing Zhang
 
