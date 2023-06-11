@@ -397,9 +397,9 @@ def train(hyp, opt, device, tb_writer=None):
                 loss_items = torch.cat((lbox, lobj, lcls, loss)).detach()
                 if opt.super: #and not opt.attention and not opt.super_attention:    
                     if opt.input_mode =='IR':
-                        sr_loss = 0.5*torch.nn.L1Loss()(output_sr,ir_image)
+                        sr_loss = 0.1*torch.nn.L1Loss()(output_sr,ir_image)
                     elif opt.input_mode =='RGB':
-                        sr_loss = 0.5*torch.nn.L1Loss()(output_sr,image)
+                        sr_loss = 0.1*torch.nn.L1Loss()(output_sr,image)
                     else:
                         sr_loss = 0.1*(torch.nn.L1Loss()(output_sr[:,0:3,:,:,],image)+torch.nn.L1Loss()(output_sr[:,3:,:,:,],ir_image[:,0:1,:,:,]))
                     loss += sr_loss
