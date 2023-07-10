@@ -46,7 +46,7 @@ SuperYOLO
 │   │   ├── fold01test.txt
 │   │   ├── fold02.txt
 │   │   ├── .....
-│   ├── VEDAI1024
+│   ├── VEDAI_1024
 │   │   ├── images
 │   │   ├── labels
 ```
