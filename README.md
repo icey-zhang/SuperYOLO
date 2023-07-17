@@ -192,7 +192,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 ## Contact
 If you have any questions, please contact me by email (jq.zhangcn@foxmail.com).
-Welcome to WeChat group communication (Multimodal Object detetcion) at any time:
+Welcome to WeChat group communication (Multimodal Object Detetcion) at any time:
 
 ![多模态目标检测交流群](https://github.com/icey-zhang/SuperYOLO/assets/54712081/657c3ffb-7ebb-427d-9410-d763f6e8c181)
 
