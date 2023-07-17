@@ -191,4 +191,8 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.
 
 ## Contact
-If you have any question, please contact me with email (jq.zhangcn@foxmail.com).
+If you have any questions, please contact me by email (jq.zhangcn@foxmail.com).
+Welcome to WeChat group communication at any time:
+![多模态目标检测交流群](https://github.com/icey-zhang/SuperYOLO/assets/54712081/906b041f-d460-46ea-bde7-5adcf4b4acfc)
+
+
