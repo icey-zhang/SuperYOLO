@@ -3,6 +3,7 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 
 - **The weights for SuperYOLO**
 
+<!--
 | Dataset |Valiadation | Weight | **mAP20** | **mAP50** |
 |:---:|:---:|:---:|:---:|:---:|
 | VEDAI | fold1 |[small_EDSR_fold1](https://pan.baidu.com/s/1Lyue-6CAUPn6KnEEOCOppg?pwd=6666)| 0.8252 | 0.8093 |
@@ -16,7 +17,7 @@ Download pre-trained model and put it in [here](https://github.com/icey-zhang/Su
 | VEDAI | fold9 |[small_EDSR_fold9](https://pan.baidu.com/s/1LpILxKI1qJHQekVuJQAiQw?pwd=6666) | 0.7374 | 0.7273 |
 | VEDAI | fold10 | [small_EDSR_fold10](https://pan.baidu.com/s/12ELeCg6rZuUO4YaaXcuJOg?pwd=6666) | 0.7479 | 0.7330 |
 |||The google drive link is [small_EDSR](https://drive.google.com/drive/folders/1rBKldurJhOxn_ahBE8xz1emlZcdqiX6z?usp=sharing) |||
-
+-->
 
 ⭐⭐ The new weight is available at [small_EDSR_MF](https://pan.baidu.com/s/186NzRpZraRimuCHYdp4Ejg?pwd=6666)
 
