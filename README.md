@@ -108,13 +108,13 @@ You can use our pretrained checkpoints for test process.
 Download pre-trained model and put it in [here](https://github.com/icey-zhang/SuperYOLO/tree/main/weights).
 
 ### 2. Begin to test
-
+<!--
 ```python
 python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR 
 ```
 
 new fusion method MF
-
+-->
 ```python
 python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR+MF
 ```
