@@ -90,7 +90,7 @@ def test(data,
     # Configure
     model.eval()
 
-    print(model)
+    # print(model)
     if isinstance(data, str):
         is_coco = data.endswith('coco.yaml')
         with open(data) as f:
