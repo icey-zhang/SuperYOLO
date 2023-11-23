@@ -1,7 +1,7 @@
 # SuperYOLO: Super Resolution Assisted Object Detection in Multimodal Remote Sensing Imagery
 ⭐ This code has been completely released ⭐ 
 
-⭐ our [article](https://arxiv.org/abs/2209.13351) ⭐ 
+⭐ our [article](https://ieeexplore.ieee.org/abstract/document/10075555) ⭐ 
 
 If our code is helpful to you, please cite:
 
