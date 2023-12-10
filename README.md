@@ -22,6 +22,24 @@ If our code is helpful to you, please cite:
 <p align="center"> <img src="Fig/framework.png" width="80%"> </p>
 
 
+We also finish the work about the quantization based on SuperYOLO：
+
+# Guided Hybrid Quantization for Object Detection in Multimodal Remote Sensing Imagery via One-to-one Self-teaching
+⭐ The code matches our paper [article](https://ieeexplore.ieee.org/abstract/document/10175627)!!!⭐ 
+
+
+ If our code is helpful to you, please cite:
+```
+
+@article{zhang2023guided,
+  title={Guided Hybrid Quantization for Object Detection in Remote Sensing Imagery via One-to-one Self-teaching},
+  author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Li, Yunsong and Yang, Geng and Jia, Xiuping},
+  journal={IEEE Transactions on Geoscience and Remote Sensing},
+  year={2023},
+  publisher={IEEE}
+}
+```
+
 ## Requirements
 
 ```python
