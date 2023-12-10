@@ -3,7 +3,7 @@
 
 ⭐ our [article](https://ieeexplore.ieee.org/abstract/document/10075555) ⭐ 
 
-We also finish the work about the **quantization** based on SuperYOLO：
+⭐ We also finish the work about the **quantization** based on SuperYOLO：
  [Guided Hybrid Quantization for Object Detection in Multimodal Remote Sensing Imagery via One-to-one Self-teaching](https://github.com/icey-zhang/GHOST)!!!⭐ 
 
 If our code is helpful to you, please cite:
