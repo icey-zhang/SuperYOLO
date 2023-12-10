@@ -3,6 +3,9 @@
 
 ⭐ our [article](https://ieeexplore.ieee.org/abstract/document/10075555) ⭐ 
 
+We also finish the work about the quantization based on SuperYOLO：
+ [Guided Hybrid Quantization for Object Detection in Multimodal Remote Sensing Imagery via One-to-one Self-teaching](https://github.com/icey-zhang/GHOST)!!!⭐ 
+
 If our code is helpful to you, please cite:
 
 ```
@@ -16,18 +19,6 @@ If our code is helpful to you, please cite:
   pages={1-15},
   doi={10.1109/TGRS.2023.3258666}}
 
-``` 
-
-
-<p align="center"> <img src="Fig/framework.png" width="80%"> </p>
-
-
-We also finish the work about the quantization based on SuperYOLO：
- [Guided Hybrid Quantization for Object Detection in Multimodal Remote Sensing Imagery via One-to-one Self-teaching](https://ieeexplore.ieee.org/abstract/document/10175627)!!!⭐ 
-
- If our code is helpful to you, please cite:
-```
-
 @article{zhang2023guided,
   title={Guided Hybrid Quantization for Object Detection in Remote Sensing Imagery via One-to-one Self-teaching},
   author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Li, Yunsong and Yang, Geng and Jia, Xiuping},
@@ -35,7 +26,12 @@ We also finish the work about the quantization based on SuperYOLO：
   year={2023},
   publisher={IEEE}
 }
-```
+
+``` 
+
+
+<p align="center"> <img src="Fig/framework.png" width="80%"> </p>
+
 
 ## Requirements
 
