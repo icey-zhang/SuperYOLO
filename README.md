@@ -184,9 +184,6 @@ You should have received a copy of the GNU General Public License along with thi
 
 ## Contact
 If you have any questions, please contact me by email (jq.zhangcn@foxmail.com).
-Welcome to WeChat group communication (Multimodal Object Detection) at any time:
-
-<p align="left"> <img src="https://github.com/icey-zhang/GHOST/assets/54712081/e1819b78-2b05-4b1d-bfdb-1f47c0a8dfba" width="20%"> </p>
 
 
 
