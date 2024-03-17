@@ -184,7 +184,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 ## Contact
 If you have any questions, please contact me by email (jq.zhangcn@foxmail.com).
-
-![微信图片_20240317145628](https://github.com/icey-zhang/SuperYOLO/assets/54712081/1422a88e-95c8-43a4-8dcb-4302f4fb607b)
+<p align="center"> <img src="Fig/Fusion_se.png" width="80%"> </p>
+![微信图片_20240317145628](https://github.com/icey-zhang/SuperYOLO/assets/54712081/1422a88e-95c8-43a4-8dcb-4302f4fb607b) <width="80%">
 
 
