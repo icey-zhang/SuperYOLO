@@ -183,7 +183,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.
 
 ## Contact
-If you have any questions, please contact me by email (jq.zhangcn@foxmail.com).
+If you have any questions, please contact me by email (jqzhang_2@stu.xidian.edu.cn).
 
 
 
