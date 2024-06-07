@@ -6,30 +6,6 @@
 ⭐ We also finish the work about the **quantization** based on SuperYOLO：
  [Guided Hybrid Quantization for Object Detection in Multimodal Remote Sensing Imagery via One-to-one Self-teaching](https://github.com/icey-zhang/GHOST)!!!⭐ 
 
-If our code is helpful to you, please cite:
-
-```
-@ARTICLE{10075555,
-  author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Fang, Zhenman and Li, Yunsong and Du, Qian},
-  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
-  title={SuperYOLO: Super Resolution Assisted Object Detection in Multimodal Remote Sensing Imagery}, 
-  year={2023},
-  volume={61},
-  number={},
-  pages={1-15},
-  doi={10.1109/TGRS.2023.3258666}}
-
-@article{zhang2023guided,
-  title={Guided Hybrid Quantization for Object Detection in Remote Sensing Imagery via One-to-one Self-teaching},
-  author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Li, Yunsong and Yang, Geng and Jia, Xiuping},
-  journal={IEEE Transactions on Geoscience and Remote Sensing},
-  year={2023},
-  publisher={IEEE}
-}
-
-``` 
-
-
 <p align="center"> <img src="Fig/framework.png" width="60%"> </p>
 
 
@@ -192,4 +168,27 @@ You should have received a copy of the GNU General Public License along with thi
 If you have any questions, please contact me by email (jqzhang_2@stu.xidian.edu.cn).
 
 
+## Reference
+If our code is helpful to you, please cite:
+
+```
+@ARTICLE{10075555,
+  author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Fang, Zhenman and Li, Yunsong and Du, Qian},
+  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+  title={SuperYOLO: Super Resolution Assisted Object Detection in Multimodal Remote Sensing Imagery}, 
+  year={2023},
+  volume={61},
+  number={},
+  pages={1-15},
+  doi={10.1109/TGRS.2023.3258666}}
+
+@article{zhang2023guided,
+  title={Guided Hybrid Quantization for Object Detection in Remote Sensing Imagery via One-to-one Self-teaching},
+  author={Zhang, Jiaqing and Lei, Jie and Xie, Weiying and Li, Yunsong and Yang, Geng and Jia, Xiuping},
+  journal={IEEE Transactions on Geoscience and Remote Sensing},
+  year={2023},
+  publisher={IEEE}
+}
+
+``` 
 
