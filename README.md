@@ -157,6 +157,10 @@ python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR+MF
 | **SuperYOLO** | Multi | **91.13** | **85.66** | **79.30** | **70.18** | **57.33** | **80.41** | **60.24** | **76.50** | **75.09** | 4.8451M | 17.98 |
 
 ## Time
+2024.4
+SuperYOLO won the **Highly Cited Paper** and **Hot paper** ！！！！！
+![image](https://github.com/icey-zhang/SuperYOLO/assets/54712081/97d18c2c-4388-4662-801b-ab296dbfb912)
+
 2023.2.14 open the train.py
 
 2023.2.14 update the new fusion method (MF)
