@@ -168,7 +168,7 @@ You should have received a copy of the GNU General Public License along with thi
 If you have any questions, please contact me by email (jqzhang_2@stu.xidian.edu.cn).
 
 
-## Reference
+## Citation
 If our code is helpful to you, please cite:
 
 ```
