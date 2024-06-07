@@ -160,7 +160,7 @@ python test.py --weights runs/train/exp/best.pt --input_mode RGB+IR+MF
 2024.4
 SuperYOLO won the **Highly Cited Paper** and **Hot paper** ！！！！！
 
-![SuperYOLO](https://github.com/icey-zhang/SuperYOLO/assets/54712081/97d18c2c-4388-4662-801b-ab296dbfb912 =200x)
+<p align="center"><img src="https://github.com/icey-zhang/SuperYOLO/assets/54712081/97d18c2c-4388-4662-801b-ab296dbfb912" alt="SuperYOLO" width="40%"/> </p>
 
 
 2023.2.14 open the train.py
