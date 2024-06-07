@@ -30,7 +30,7 @@ If our code is helpful to you, please cite:
 ``` 
 
 
-<p align="center"> <img src="Fig/framework.png" width="80%"> </p>
+<p align="center"> <img src="Fig/framework.png" width="60%"> </p>
 
 
 ## Requirements
@@ -173,7 +173,7 @@ SuperYOLO won the **Highly Cited Paper** and **Hot paper** ！！！！！
 
 ## Visualization of results
 
-<p align="center"> <img src="Fig/results.png" width="90%"> </p>
+<p align="center"> <img src="Fig/results.png" width="60%"> </p>
 
 ## Acknowledgements
 This code is built on [YOLOv5 (PyTorch)](https://github.com/ultralytics/yolov5). We thank the authors for sharing the codes.
