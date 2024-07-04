@@ -241,11 +241,11 @@ class Model(nn.Module):
             if self.training==True:
                 if self.sr:
                     output_sr = self.model_up(y[self.l1],y[self.l2]) #在超分上加attention    
-                    return x,output_sr,y#(y[self.f1],y[self.f2],y[self.f3])#(y[4],y[8],y[18],y[21],y[24])#(y[7],y[15],y[-2])
+                    return x,output_sr,y
                 else:
-                    return x,y#(y[self.f1],y[self.f2],y[self.f3])#(y[4],y[8],y[18],y[21],y[24])#(y[7],y[15],y[-2])
+                    return x,y
             else:
-                return x,y#(y[17],y[20],y[23])#(y[4],y[8],y[18],y[21],y[24])#(y[7],y[15],y[-2])(y[-4],y[-3],y[-2])
+                return x,y
 
 
     def _initialize_biases(self, cf=None):  # initialize biases into Detect(), cf is class frequency
