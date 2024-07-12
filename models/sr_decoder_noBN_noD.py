@@ -3,9 +3,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from models.sync_batchnorm.batchnorm import SynchronizedBatchNorm2d
 #from models.common import AttentionModel
-class Decoder(nn.Module):
+class Encoder(nn.Module):
     def __init__(self, c1,c2):
-        super(Decoder, self).__init__()
+        super(Encoder, self).__init__()
         
         self.conv1 = nn.Conv2d(c1, c1//2, 1, bias=False)
         self.conv2 = nn.Conv2d(c2, c2//2, 1, bias=False)
