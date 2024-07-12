@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from models.sync_batchnorm.batchnorm import SynchronizedBatchNorm2d
-from models.sr_decoder_noBN_noD import Decoder
+from models.sr_decoder_noBN_noD import Encoder
 from models.edsr import EDSR
 
 # class AttentionModel(nn.module):
@@ -42,7 +42,7 @@ class DeepLab(nn.Module):
             BatchNorm = nn.BatchNorm2d
 
         #self.attention = AttentionModel(128)
-        self.sr_decoder = Decoder(c1,c2)
+        self.sr_encoder = Encoder(c1,c2)
         self.edsr = EDSR(num_channels=ch,input_channel=64, factor=8)
         # self.up_sr_1 = nn.ConvTranspose2d(64, 64, 2, stride=2) 
         # self.up_edsr_1 = EDSRConv(64,64)
@@ -57,7 +57,7 @@ class DeepLab(nn.Module):
         # self.freeze_bn = freeze_bn
 
     def forward(self, low_level_feat,x):
-        x_sr= self.sr_decoder(x, low_level_feat,self.factor)
+        x_sr= self.sr_encoder(x, low_level_feat,self.factor)
         x_sr_up = self.edsr(x_sr)
         #attention_map,x_sr = self.attention(x_sr)
         # x_sr_up = self.up_sr_1(x_sr)
@@ -79,11 +79,5 @@ class DeepLab(nn.Module):
     #         elif isinstance(m, nn.BatchNorm2d):
     #             m.eval()
 
-if __name__ == "__main__":
-    model = DeepLab(backbone='mobilenet', output_stride=16)
-    model.eval()
-    input = torch.rand(1, 3, 513, 513)
-    output = model(input)
-    print(output.size())
 
 
