@@ -201,12 +201,12 @@ If our code is helpful to you, please cite:
   <source
     media="(prefers-color-scheme: light)"
     srcset="
-      https://api.star-history.com/svg?repos=Linfeng-Tang/Image-Fusion&type=Date
+      https://api.star-history.com/svg?repos=icey-zhang/SuperYOLO&type=Date
     "
   />
   <img
     alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=Linfeng-Tang/Image-Fusion&type=Date"
+    src="https://api.star-history.com/svg?repos=icey-zhang/SuperYOLO&type=Date"
   />
 </picture>
 
